@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Geometric Formulas</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f9f9f9;
+            margin: 20px;
+        }
+        h1 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .container {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        .card {
+            background-color: #fff;
+            border: 1px solid #ddd;
+            padding: 15px;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+        input {
+            width: 80%;
+            padding: 8px;
+            margin: 8px 0;
+        }
+        button {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            padding: 8px 12px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+        img {
+            width: 200px;
+            margin: 10px auto;
+        }
+        .result {
+            font-weight: bold;
+            color: #333;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Geometric Formulas Calculator</h1>
+    <div class="container">
+        <!-- 1. Area of Circle -->
+        <div class="card">
+            <h3>Area of Circle</h3>
+            <img src="./img/area-circle-formula-mathematics-d-rendering-283519647.webp" alt="Circle">
+            <p>Formula: A = πr²</p>
+            <input type="number" id="radius" placeholder="Enter Radius (r)">
+            <button onclick="calculateCircle()">Calculate</button>
+            <div class="result" id="circleResult"></div>
+        </div>
+        
+        <!-- 2. Area of Triangle -->
+        <div class="card">
+            <h3>Area of Triangle</h3>
+            <img src="./img/tringle.png" alt="Triangle">
+            <p>Formula: A = ½ × b × h</p>
+            <input type="number" id="base" placeholder="Enter Base (b)">
+            <input type="number" id="height" placeholder="Enter Height (h)">
+            <button onclick="calculateTriangle()">Calculate</button>
+            <div class="result" id="triangleResult"></div>
+        </div>
+        
+        <!-- 3. Area of Rectangle -->
+        <div class="card">
+            <h3>Area of Rectangle</h3>
+            <img src="./img/7001161.webp" alt="Rectangle">
+            <p>Formula: A = l × w</p>
+            <input type="number" id="length" placeholder="Enter Length (l)">
+            <input type="number" id="width" placeholder="Enter Width (w)">
+            <button onclick="calculateRectangle()">Calculate</button>
+            <div class="result" id="rectangleResult"></div>
+        </div>
+        
+        <!-- 4. Area of Square -->
+        <div class="card">
+            <h3>Area of Square</h3>
+            <img src="./img/squre.png" alt="Square">
+            <p>Formula: A = s²</p>
+            <input type="number" id="side" placeholder="Enter Side (s)">
+            <button onclick="calculateSquare()">Calculate</button>
+            <div class="result" id="squareResult"></div>
+        </div>
+
+        <!-- 5. Volume of Sphere -->
+        <div class="card">
+            <h3>Volume of Sphere</h3>
+            <img src="./img/volumeofsphere.jpg" alt="Sphere">
+            <p>Formula: V = (4/3)πr³</p>
+            <input type="number" id="sphereRadius" placeholder="Enter Radius (r)">
+            <button onclick="calculateSphere()">Calculate</button>
+            <div class="result" id="sphereResult"></div>
+        </div>
+
+        <!-- 6. Volume of Cube -->
+        <div class="card">
+            <h3>Volume of Cube</h3>
+            <img src="./img/cube.png" alt="Cube">
+            <p>Formula: V = s³</p>
+            <input type="number" id="cubeSide" placeholder="Enter Side (s)">
+            <button onclick="calculateCube()">Calculate</button>
+            <div class="result" id="cubeResult"></div>
+        </div>
+
+        <!-- 7. Perimeter of Circle -->
+        <div class="card">
+            <h3>Perimeter of Circle</h3>
+            <img src="./img/Area-Perimeter-Formula-7.png" alt="Circle">
+            <p>Formula: P = 2πr</p>
+            <input type="number" id="circlePerimeterRadius" placeholder="Enter Radius (r)">
+            <button onclick="calculateCirclePerimeter()">Calculate</button>
+            <div class="result" id="circlePerimeterResult"></div>
+        </div>
+
+        <!-- 8. Perimeter of Rectangle -->
+        <div class="card">
+            <h3>Perimeter of Rectangle</h3>
+            <img src="./img/RectangularParallelpipedDiagram162619.png" alt="Rectangle">
+            <p>Formula: P = 2(l + w)</p>
+            <input type="number" id="perimeterLength" placeholder="Enter Length (l)">
+            <input type="number" id="perimeterWidth" placeholder="Enter Width (w)">
+            <button onclick="calculateRectanglePerimeter()">Calculate</button>
+            <div class="result" id="rectanglePerimeterResult"></div>
+        </div>
+
+        <!-- 9. Perimeter of Square -->
+        <div class="card">
+            <h3>Perimeter of Square</h3>
+            <img src="./img/squre2.png" alt="Square">
+            <p>Formula: P = 4s</p>
+            <input type="number" id="squarePerimeterSide" placeholder="Enter Side (s)">
+            <button onclick="calculateSquarePerimeter()">Calculate</button>
+            <div class="result" id="squarePerimeterResult"></div>
+        </div>
+    </div>
+
+    <script src="./script.js"></script>
+</body>
+</html>
