@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Converter</title>
+    <link rel="stylesheet" type="text/css" href="style.css" />
+</head>
+<body>
+    <div class="convert">
+        <h1 id="header">Converter</h1>
+        <label for="text">Enter:  
+      <input type="text" id="val" placeholder="Enter your value"></label>
+      <label for="division">Convert:
+      <select id="division">
+        <option value="">--Select Format--</option>
+        <option value="cel">celcius to fahranh</option>
+        <option value="fah">fahranh to celcius</option>
+        <option value="rupee">dollar to rupee</option>
+        <option value="dollar">rupee to dollar</option>
+        
+      </select></label>
+      <button class="btn" type="button" onclick="converter()">Convert</button>
+      <p>Result: <span class="result" id="Result"></span></p>
+   
+        
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
