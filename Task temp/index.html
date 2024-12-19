@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Assignment</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body >
+    <div class="convert">
+        <h1 id="header">Converter</h1>
+        <div class="input">
+            <label for="text">Enter:  
+                <input type="text" id="val" placeholder="Enter your value"></label>
+                <div id="extraInput"></div> 
+                <label for="division">Check
+                <select id="division" onchange="handleSelect()">
+                  <option value="">--Select Format--</option>
+                  <option value="1">checkNumber</option>
+                  <option value="2">sumOfNaturalNumbers</option>
+                  <option value="3">factorial</option>
+                  <option value="4">findFactors</option>
+                  <option value="5">isPrime</option>
+                  <option value="6">generateFibonacci</option>
+                  <option value="7">isPalindrome</option>
+                  <option value="8">sumOfDigits</option>
+                  <option value="9">isArmstrong</option>
+                  <option value="10">isLeapYear</option>
+                  <option value="11">gcd</option>
+                  <option value="12">lcm</option>
+                  <option value="13">gcdValue</option>
+                  
+                </select></label>
+        </div>
+      <button class="btn" type="button" onclick="data()">Convert</button>
+      <p>Result: <span class="result" id="Result"></span></p>
+   
+        
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
