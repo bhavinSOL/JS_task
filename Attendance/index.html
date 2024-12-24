@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Attendance</title>
+</head>
+<body>
+    <div>Online Attandence</div>
+    <button type="button" onclick="init()">Start</button>
+    <div id="webcam-container"></div>
+    <div id="label-container"></div>
+    <div id="attendance-log" style="margin-top: 20px;">
+        <h3>Attendance Log:</h3>
+        <ul id="attendance-list"></ul>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@latest/dist/tf.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@teachablemachine/image@latest/dist/teachablemachine-image.min.js"></script>
+    <script type="text/javascript">
+        const URL = "https://teachablemachine.withgoogle.com/models/XXqpBCMcA/";
+
+        let model, webcam, labelContainer, maxPredictions;
+        const attendanceLog = new Set();
+
+        async function init() {
+            const modelURL = URL + "model.json";
+            const metadataURL = URL + "metadata.json";
+
+            model = await tmImage.load(modelURL, metadataURL);
+            maxPredictions = model.getTotalClasses();
+
+            const flip = true; // whether to flip the webcam
+            webcam = new tmImage.Webcam(200, 200, flip); // width, height, flip
+            await webcam.setup(); // request access to the webcam
+            await webcam.play();
+            window.requestAnimationFrame(loop);
+
+            document.getElementById("webcam-container").appendChild(webcam.canvas);
+            labelContainer = document.getElementById("label-container");
+            for (let i = 0; i < maxPredictions; i++) {
+                labelContainer.appendChild(document.createElement("div"));
+            }
+        }
+
+        async function loop() {
+            webcam.update(); // update the webcam frame
+            await predict();
+            window.requestAnimationFrame(loop);
+        }
+
+        async function predict() {
+            const prediction = await model.predict(webcam.canvas);
+            let matched = false;
+
+            for (let i = 0; i < maxPredictions; i++) {
+                const confidence = prediction[i].probability.toFixed(2);
+                const classPrediction = `${prediction[i].className}: ${confidence}`;
+                labelContainer.childNodes[i].innerHTML = classPrediction;
+
+                // Confirm attendance if confidence is greater than 85%
+                if (confidence > 0.85) {
+                    matched = true;
+                    confirmAttendance(prediction[i].className);
+                }
+            }
+
+            if (!matched) {
+                console.log("No match with sufficient confidence.");
+            }
+        }
+
+        function confirmAttendance(name) {
+            const attendanceList = document.getElementById("attendance-list");
+            if (!attendanceLog.has(name)) {
+                attendanceLog.add(name);
+                const listItem = document.createElement("li");
+                listItem.textContent = `Attendance confirmed for: ${name}`;
+                attendanceList.appendChild(listItem);
+                console.log(`Attendance confirmed for: ${name}`);
+            }
+        }
+    </script>
+</body>
+</html>
